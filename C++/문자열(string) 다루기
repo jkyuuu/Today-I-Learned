@@ -16,4 +16,113 @@
   1. 배열처럼 접근
    - string str = "TEST"; 일 때, str[0]은 'T'를 반환. 이 때 반환되는 문자는 char형임에 주의!!!!!
   2. .at(index)로 접근
-   - string str = "TEST"; 일 때, str.at(1)은 'E'를 반환. 
+   - string str = "TEST"; 일 때, str.at(1)은 'E'를 반환. 이 때 반환되는 문자는 char형임에 주의!!!!
+   
+ <문자열의 맨 앞과 끝 문자 반환>
+  * str.front(); -> 맨 앞 문자 반환
+  * str.back(); -> 맨 끝 문자 반환
+ 
+ <문자열의 길이 반환>
+  * str.size(); 또는 str.length(); 둘 다 가능
+  
+ <숫자를 문자열(string)로, 문자열을 숫자로 바꾸기>
+  * 숫자 -> 문자열 전환 : to_string(숫자); 로 사용.
+  
+   ex)
+    int a = 7;
+    string str1;
+    str1 = to_string(a);  // 7이 string "7"로 변환되어 str1에 저장됨.
+    
+  * 문자열 -> 숫자 변환 : int 타입, double 타입 등 숫자 타입에 따라 아래와 같이 사용합니다. (stoi, stod, stof 함수)
+  
+   ex)
+    string str_a = "7";
+    string str_b = "7.07";
+    string str_c = "3.14";
+    string str_d = "7000000000";
+    
+    int change_a = stoi(str_a); // "7"을 int형 7로 변경.
+    double change_b = stod(str_b); // "7.07"을 double형 7.07로 변경.
+    float change_c = stof(str_c); // "3.14"를 float형 3.14로 변경.
+    long int change_d = stof(str_d); // "7000000000"을 long int형 7000000000 으로 변경.
+    
+    
+ <문자열의 Capacity>
+  * string 클래스로 선언된 문자열은 문자열 길이 말고도 capacity라는 값이 존재한다.
+  * capacity : 객체에 할당된 메모리 bytes 크기. 객체에 들어올 문자열 크기 대비 더 넉넉하게 잡혀짐.
+  * str.capacity(); 로 capacity 값 확인 가능
+  * str.reserve(n); 은 문자열 객체에 미리 n bytes 크기를 할당하는 명령어.
+   - 1000 bytes 까지만 허용해야 바람직한 공간이 있다고 가정해 보면,
+   - 글자를 읽어올 때마다 문자열 길이가 증가하여, capacity 값이 넉넉하게 알아서 증가된다면,
+     일정 수 이상을 읽어오면 capacity 값이 1000 bytes를 초과할 수 있다.
+   - 즉, 알아서 capacity 값이 넉넉하게 잡혀지는, 특정 상황에서의 비효율적인 행위를 제한하기 위해,
+     미리 capacity 값을 정해야 하는 상황에서 사용 가능.
+ 
+ 
+ <string의 유용한 함수들>
+  * str.empty(); : 문자열이 비었나 확인. 문자열의 size 혹은 length 값이 0인지 확인하는 것.  
+  * swap(str1, str2) : str1, str2 문자열 간 서로 swap하기(바꿈)
+  * str.clear(); : str에 들어있던 문자열을 없앤다. (단, capacity 값은 유지)
+  * str1.append(str2); : str1 문자열 맨 뒤에 str2 문자열 추가.
+   
+   ex)
+    string str1 = "str1";
+    string str2 = "str2";
+    str1.append(str2); // "str1str2" 반환
+    str2.append("test"); // "str2test" 반환
+    // 팁 : str1 + str2 를 하면 str1에 append(str2) 한 효과와 동일.
+    
+  * str.find(str2); : str에서 문자열 str2를 찾고, 이것의 str에서의 시작점 인덱스를 반환.
+  
+   ex)
+    string str1 = "test";
+    string str2 = "st";
+    str1.find(str2); // 2 반환 (test에서 st의 s는 2번째 인덱스 이므로)
+    
+  * str.substr(); : 문자열의 일부분을 반환 -> 반환형이 string
+  
+   ex)
+    string str = "TESTstr";
+    str.substr(3); // 3번째 인덱스인 T 부터 끝까지 반환 -> Tstr 반환
+    str.substr(3, 2); // 3번쨰 인덱스인 T 부터 2 길이 만큼의 문자열 반환 -> Ts 가 반환
+    
+  * replace 멤버함수는 용도에 따라 다양하게 오버로딩 되어 있다.
+  * str.replace(idx, len, str2); : 문자열의 특정 인덱스부터 일정 길이 만큼 str2로 변경
+  
+   ex)
+    string str1 = "TEST";
+    string str2 = "yours";
+    str1.replace(1, 2, str2); // str1의 1번쨰 인덱스인 E부터 2개 길이 만큼의 문자열이 str2로 변경 -> TyoursT 로 변경
+    
+  * str.replace(str.begin()+1, str.begin()+3, str2); : [예] str의 1번째 인덱스부터 3번째 인덱스 직전까지의 문자열을 str2로 변경
+  
+   ex)
+    string str1 = "TESTT";
+    str1.replace(str.begin()+1, str.begin()+4, "aa");  // EST를 aa로 변경. TaaT.
+    
+    
+  * 문자열의 사전 순서 비교 - 부등호로 비교 가능(<,>,==)
+  
+   ex)
+    string str1 = "aaaa";
+    string str2 = "bbbb";
+    
+    cout << (str1 < str2); // 1(참)이 반환.
+    // 즉, str1과 str2가 사전 순으로 str1이 더 앞선 글자이므로, str2보다 작다.
+    
+  * 따라서 + 연산자로 두 문자열을 쉽게 합치는 것도 가능.
+  
+   ex)
+    string str1 = "10";
+    string str2 = "6";
+    
+    cout << (str1 < str2); // 1 반환
+    // 사전 순으로 10이 6보다 앞
+    // 사전식 비교는 맨 앞의 문자부터 비교하는 것으로 차이가 생기면 더 이상 비교하지 않음.
+    
+    string str3 = str1 + str2; // "106"
+    string str4 = str2 + str1; // "610"
+    
+    cout << (str3 < str4); // 1 반환 , "610"이 사전 순서상 뒤
+    // 응용해보면, 같은 자리수로 받아진 정수 형태의 문자열 비교는 단순히 int형 처럼 비교해도 상관없다고 할 수 있음.
+
