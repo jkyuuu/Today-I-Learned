@@ -1,0 +1,73 @@
+1. char
+
+ * char : 문자라는 1 byte의 변수
+ * 즉, 단어 하나를 뜻하는 것이며 2 byte의 한글과는 문자 길이가 맞지 않아 깨진다.
+ * 중요한 것이 char에 정수 값을 대입해도 정수로 받아들이는 것이 아닌 문자의 ASCII 코드로 출력된다.
+ 
+  ex)
+   char a = "65";
+   cout << a << endl;  // A 로 출력. ASCII 코드 값의 65는 A이다.
+ 
+ 
+ 2. char*
+ 
+  * char* : 문자열을 나타내는 것
+  * 글자 여러개가 계속 이어진 값을 가질 수 있다.
+  * 문자의 포인터 변수는 문자열을 담기 위해 사용.
+  
+   ex)
+    char * str = "가나다라마바사" 일 때, 포인터는 첫 글자이자 문자열의 시작 주소 '가'를 가리킨다.
+     - 또한 문자열의 끝에 마지막 지정 문자가 들어간다.
+     
+   ex)
+    char * p = "abcd";
+    
+    cout << p[0] << endl; // error
+    cout << p[1] << endl; // error
+    cout << p[2] << endl; // error
+    cout << p[3] <<endl; // error
+ 
+    cout << p << endl; // abcd
+    cout << p+1 << endl; // bcd
+    cout << p+2 << endl; // cd
+    cout << p+3 << endl; // d
+    
+    * char* 는 포인터 변수 이므로 변수에 직접적 접근 및 수정이 불가하다.
+    * p[0], p[1] 등은 직접 접근이기에 실행하면 오류 발생.
+    * p+1, p+2 등은 a에서 b 그리고 c로 포인터 변수의 시작주소가 바뀌는 것이기 때문에 문자 하나하나가 줄어들며 출력.
+    
+    
+
+3. char[]
+
+ * char[] : char* 과 같이 문자열을 나타내는 것은 똑같으나, 포인터 변수가 아닌 배열로 나타내는 것.
+ * 즉, 주소값에 대해 접근하는 것이 아니기 때문에 char*와 다르게 문자열 하나하나 수정 가능하다.
+ * 문자열이 실제 4개이지만 5개로 지정하는 이유는 끝에 마지막 지정문자가 들어가기 때문이다.
+ ** char[] 에서는 꼭 크기를 정해주어야 한다.
+ 
+  ex)
+   char p[5] = "abcd";
+   cout << p << endl;  // abcd 출력
+   p[2] = 'z';
+   cout << p << endl;  // abzd 출력
+   
+   // p[4] = "abcd" 일때는 길이가 맞지 않는 에러가 발생한다.
+   
+
+4. string
+
+ * char[]는 struct를 사용하고 string은 class의 객체이다.
+ * 때문에 string을 사용하기 위해서는 #include<string> 라이브러리를 include하여 사용해야 하고
+ * cout을 통해 출력되는 결과물이 같더라도 각각 변환을 위해서는 생성자나 메소드를 활용해야 한다.
+ * 차이점
+  - char[] str 의 경우 해당 배열 크기는 strlen(str)
+  - string str 의 경우 크기는 str.size() 이고 char[]에서는 사용할 수 없었던 문자열 처리를 쉽게 할 수 있다.
+ 
+  ex)
+   string tempstr = "C++";
+	 string tempstr2 = "java";
+
+	 tempstr2 = tempstr;  // tempstr2는 C++로 덮어쓰기 된다
+	 string str = tempstr + "그리고" + tempstr2;  
+
+	 cout << str << endl; // C++ 그리고 C++
