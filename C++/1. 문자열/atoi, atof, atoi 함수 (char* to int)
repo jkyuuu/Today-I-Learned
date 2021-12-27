@@ -58,9 +58,31 @@
    이 경우에는 isdigit() 을 이용해 판단.
    
  * isdigit() 했을 때 true 라면 '0이 아닌 숫자'. false라면 '0' 
+ * isdigit() 헤더 파일은 <cctype>
  
   ex)
    isdigit(str1[0]) -> 's' 이기 때문에 0 (false)
    isdigit(str2[0]) -> '2' 이기 떄문에 0 아닌 숫자 (true)
+   
+  ex)
+   char str3[] = "7777string";  //숫자+문자
+   
+   for (int i = 0; i < 14; i++)
+   {
+       cout << i << " " << str3[i] << " " << isdigit(str3[i]) << endl;
+   }
+   
+   // for 문 돌리면 숫자(7777)은 각각 0 아닌 숫자로 출력
+   
+   -------------------------------------------------------------------------
+   
+   string str3 = "7777string";  //숫자+문자
+   
+   for (int i = 0; i < str3.size(); i++)
+   {
+       cout << i << " " << str3[i] << " " << isdigit(str3[i]) << endl;
+   }
+   
+   // 위와 값이 동일하지만 string은 str3.size()로 범위지정 해야함.
 
 
