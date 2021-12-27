@@ -1,0 +1,66 @@
+1. atoi, atof, atol
+
+ * char(ASCII) to integer
+ 
+  - atoi = char* to int = 문자열을 정수 타입으로
+  - atof = char* to float = 문자열을 실수 타입으로
+  - atol = char* to long int = 문자열을 long 정수 타입으로
+  
+ * 여기서 char는 char[N], char* 로 표현이 되는 문자열
+ * C++ 에서는 string 클래스에 의해서 문자열을 string으로 표현, C언어에서는 string 클래스가 존재하지 않기 때문에 char 배열을 이용하여 문자열을 표현
+ 
+ * 헤더 파일은 <cstdlib>, <cstdio>
+ 
+
+2. 함수 사용
+
+ ex 1)
+  #include <cstdlib> // (방법 1) atoi 함수가 선언된 헤더파일 (char(ASCII) to integer : char 형을 int형으로 바꾸기)
+  #include <cstdio>
+
+  using namespace std;
+
+  int main()
+  {
+      int num = 0;
+      char str[30] = "2022";  
+      // 혹은 const char* cStr = "2019";
+
+      //문자열 타입으로 출력.
+      cout << "char* = " << str << endl;   // char* = 2022
+
+      //char* -> int
+      num = atoi(str);
+
+      //숫자 타입으로 출력.
+      cout << "int = " << num << endl;  // int = 2022
+  }
+  
+  
+ ex 2)
+    char str1[] = "string";      //문자열만 있는 경우
+    char str2[] = "7777";        //숫자만 있는 경우
+    char str3[] = "7777string";  //숫자+문자
+    char str4[] = "string 7777"; //숫자+문자
+ 
+    cout << "atoi("string"); :"   << atoi(str1) << endl;      // 0 출력
+    cout << "atoi("7777"); :"   << atoi(str2) << endl;        // 7777 출력
+    cout << "atoi("7777string"); :" << atoi(str3) << endl;    // 7777 출력
+    cout << "atoi("string7777"); : " << atoi(str4) << endl;   // 0 출력
+    
+    
+
+3. atoi 함수의 원리
+
+ * 매개변수로 들어온 문자열을 맨 앞부터 읽어서 '공백'이나 '숫자가 아닌 문자'가 나오기 전까지 숫자로 변환하는 원리.
+ 
+ * 만약 atoi("0")과 atoi("string") 의 반환 값을 출력 했다면 둘 다 0이 나오기 때문에
+   이 경우에는 isdigit() 을 이용해 판단.
+   
+ * isdigit() 했을 때 true 라면 '0이 아닌 숫자'. false라면 '0' 
+ 
+  ex)
+   isdigit(str1[0]) -> 's' 이기 때문에 0 (false)
+   isdigit(str2[0]) -> '2' 이기 떄문에 0 아닌 숫자 (true)
+
+
