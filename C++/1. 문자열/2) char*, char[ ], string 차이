@@ -72,3 +72,6 @@
 	 string str = tempstr + "그리고" + tempstr2;  
 
 	 cout << str << endl; // C++ 그리고 C++
+
+
+[출처] https://erjuer.tistory.com/57
