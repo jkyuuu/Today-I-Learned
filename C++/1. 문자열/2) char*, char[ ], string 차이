@@ -17,11 +17,11 @@
   * C에서 문자열 리터럴의 형식은 의 char 배열이지만 C++에서는 const char 배열입니다. (cpp에서 그냥 char* 하면 error C2440 나옴.)
   
    ex)
-    const char * str = "가나다라마바사" 일 때, 포인터는 첫 글자이자 문자열의 시작 주소 '가'를 가리킨다.
+    const char* str = "가나다라마바사" 일 때, 포인터는 첫 글자이자 문자열의 시작 주소 '가'를 가리킨다.
      - 또한 문자열의 끝에 마지막 지정 문자가 들어간다.
      
    ex)
-    const char * p = "abcd";
+    const char* p = "abcd";
     
     cout << p[0] << endl; // error
     cout << p[1] << endl; // error
