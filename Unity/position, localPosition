@@ -1,0 +1,18 @@
+1. transform.position
+
+ - 월드 원점 기준으로 월드 공간 상 트랜스폼 위치를 나타냄.
+ - 스크립트 상에 position 위치 값과 인스펙터 트랜스폼 값이 다를 수 있다.
+   --> 이유 : 다른 오브젝트의 자식일 경우 월드 원점 기준으로 위치하기 위해 Local 좌표를 변경하기 때문.
+
+2. transform.localPosition
+
+ - 부모의 트랜스폼에 상대적인 트랜스폼 위치값을 나타냄.
+ - 즉, 스트립트 상 위치 값과 인스펙터 값이 같다.
+ - 부모 트랜스폼 값이 없을 경우(부모가 없을 경우)에는 transform.position과 같다.
+ - 주의 : 월드 위치 계산 시, 부모 트랜스폼 월드 회전과 스케일이 로컬 위치에 적용됨.
+          transform.position에서 1unit은 항상 1 unit 이지만, transform.localPosition에서 1 unit은 모든 부모의 스케일 값에 의해서 크기가 변경됨.
+
+
+<출처>
+https://docs.unity3d.com/kr/530/ScriptReference/Transform-position.html
+https://docs.unity3d.com/kr/530/ScriptReference/Transform-localPosition.html
