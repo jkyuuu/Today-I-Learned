@@ -13,8 +13,8 @@
   * -.Angle : 두 개의 rotation A와 B 사이 각도를 반환한다.
     Quaternion.Angle(transform.rotation, target.rotation);
   
-  * -.Euler : z축 주위로 z, x축 주위로 x, y축 주위로 y 각도만큼 회전한(순서대로) Rotation을 반환. 
-  * -.eulerAngle : 회전(rotation)의 euler 각도를 반환. z축 주위를 euler.z도 x축 주위를 euler.x, y축 주위를 euler.y도 만큼 회전시키는 회전을 나타냄. (이 순서대로)
+  * -.Euler : x축 주위로 x, y축 주위로 y, z축 주위로 z 각도만큼 회전한(순서대로) Rotation을 반환. 
+  * -.eulerAngle : 회전(rotation)의 euler 각도를 반환. x축 주위를 euler.x, y축 주위를 euler.y도, z축 주위를 euler.z도 만큼 회전시키는 회전을 나타냄. (이 순서대로)
   * -.Lerp : 두 개의 transform(from, to) 사이를 /t/로 보간하여 정규화.
     transform.rotation = Quaternion.Lerp(from.rotation, to.rotation, Time.time * speed);
     
