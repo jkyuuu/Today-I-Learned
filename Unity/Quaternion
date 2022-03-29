@@ -1,0 +1,21 @@
+<Quaternion>
+
+ - Quaternion은 회전을 표현하기 위해 사용.
+ - 짐벌 락에 걸리지 않는다.
+   * 집벌 락 : x, y, z 축으로 회전 시 회전 각에 따라 각 축이 겹쳐지는 경우가 있는데 이 경우 짐벌 락에 걸린다고 말한다.
+   
+ - 이는 복잡한 수를 기반으로 하고, 직관적으로 이해하기 어렵다. 따라서 거의 접근하지 않거나 개별 쿼터니언 컴포넌트(x,y,z,w)를 수정하지 않는다.
+ - 대부분 기존의 회전을 취하고 transform으로부터 새 회전을 생성하기 위해 사용한다.(부드럽게 두 회전을 보간하기 위해서)
+ 
+ ex) 자주 사용하는 함수
+  : Quaternion.LookRotation, Quaternion.Angle, Quaternion.Euler, Quaternion.Slerp, Quaternion.FromToRotation, and Quaternion.identity
+  
+  * -.Angle : 두 개의 rotation A와 B 사이 각도를 반환한다.
+    Quaternion.Angle(transform.rotation, target.rotation);
+  
+  * -.Euler : z축 주위로 z, x축 주위로 x, y축 주위로 y 각도만큼 회전한(순서대로) Rotation을 반환. 
+  * -.eulerAngle : 회전(rotation)의 euler 각도를 반환. z축 주위를 euler.z도 x축 주위를 euler.x, y축 주위를 euler.y도 만큼 회전시키는 회전을 나타냄. (이 순서대로)
+  * -.Lerp : 두 개의 transform(from, to) 사이를 /t/로 보간하여 정규화.
+    transform.rotation = Quaternion.Lerp(from.rotation, to.rotation, Time.time * speed);
+    
+  * -.identity : "회전 없음"을 뜻한다. 오브젝트는 완벽하게 월드 좌표 축 또는 부모 축으로 정렬된다.
