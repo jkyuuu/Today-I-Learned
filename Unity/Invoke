@@ -1,0 +1,28 @@
+<Invoke>
+
+1. Invoke(string methodName, float time);
+  - 설정한 시간에 함수 호출
+
+2. InvokeRepeating(string methodName, float time, float repeatRate);
+  - time 초에 함수명 호출 후, 매 repeatRate 초마다 반복 호출
+  
+  ex) InvokeRepeating("LaunchProjectile", 2, 0.3F);
+
+3. CancelInvoke();
+  - 모든 Invoke 호출 취소.
+
+4. CancelInvoke("함수명");
+
+  - 실행 중인 함수를 중단하고 싶을 때 사용.
+
+  ex) 어떤 키를 누를 때 함수가 실행되지 않도록 할 때 사용. 누르지 않거나 한번 더 누르면 다시 함수 실행되도록.
+
+            if(Input.GetKey(KeyCode.LeftShift))
+            {
+                CancelInvoke("thirdMove");
+                Debug.Log("thirMove 함수 중단");
+            }
+            else
+            {
+                thirdMove();
+            }
