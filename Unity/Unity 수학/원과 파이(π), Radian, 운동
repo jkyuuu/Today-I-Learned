@@ -24,3 +24,42 @@
  - 반대로, Degree를 Radian으로 변환하면
   => 1º = (π / 180º) rad
   => 360º = 2π rad
+
+
+예시)
+
+ Transform transform;
+    Vector3 pointVector;
+    
+    public int speed = 1;
+    private int degree = 0; 
+
+    void Start () {
+           transform = GetComponent<Transform>();
+    }
+	
+    void Update () {
+          if (Input.GetKey(KeyCode.UpArrow))
+          {
+              degree += speed;
+              float radian = degree * Mathf.PI / 180; //라디안값
+
+             pointVector.x += 2f * Mathf.Cos(radian);
+             pointVector.y += 2f * Mathf.Sin(radian);
+
+              transform .position = pointVector;
+          }
+    }
+
+
+해석)
+
+ - degree * Mathf.PI / 180 는 Degree 값을 Radian 값으로 변환하는 공식
+ - 1º = (π / 180º) rad
+ - 즉, 1도는 (180도 분의 π) rad 인데, (180도 분의 π) rad에 degree를 곱하면 누를 수록 더해지는 rad 값이 나옴.
+
+ - pointVector.x += 2f * Mathf.Cos(radian)
+  => 이는 구해진 radian 값으로 Cos을 구하면 'cosθ = 밑변/빗변' 이기 때문에 반지름이 1이라고 할 때 'cosθ = 밑변' 값이 된다. 밑변은 Vector3의 x 값이 된다.
+ - pointVector.y += 2f * Mathf.Sin(radian)
+  => 이는 구해진 radian 값으로 Sin을 구하면 'sinθ = 높이/빗변' 이기 때문에 반지름이 1이라고 할때 'sinθ = 높이' 값이 된다. 높이는 Vector3의 y 값이 된다.
+ - 즉, (x,y) 의 한 점이 정해지면 2만큼 떨어진 위치에서 원을 그리며 이동하게 된다.
