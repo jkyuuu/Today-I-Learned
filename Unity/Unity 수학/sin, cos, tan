@@ -1,0 +1,19 @@
+<sin, cos, tan>
+
+ - sin, cos, tan 를 설명하기 위해서는 직각삼각형이 필요하다.
+ - 직각삼각형에는 빗변(Hypotenuse), 밑변(Adjacent), 높이(Opposite) 세 개의 변이 있다.
+ - 각각 변 사이의 비율을 나타내는 식이 바로 sin, cos, tan 이다.
+ - θ는 Theta(세타)라고 읽고 임의의 각도를 나타낸다.
+
+
+1. sin
+ - sinθ (사인 세타) : 직각삼각형의 임의의 각도가 θ일 때, 빗변(Hypotenuse)과 높이(Opposite)의 비율
+ - sinθ = 높이(Opposite) / 빗변(Hypotenuse)  -> 빗변 분의 높이
+
+2. cos
+ - cosθ (코사인 세타) : 직각삼각형의 임의의 각도가 θ일 때, 빗변(Hypotenuse)과 밑변(Adjacent)의 비율
+ - cosθ = 밑변(Adjacent) / 빗변(Hypotenuse) -> 빗변 분의 밑변
+
+3. tan
+ - tanθ (탄젠트 세타) : 직각삼각형의 임의의 각도가 θ일 때, 밑변(Adjacent)과 높이(Opposite)의 비율
+ - tanθ = 높이(Opposite) / 밑변(Adjacent) -> 밑변 분의 높이
