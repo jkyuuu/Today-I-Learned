@@ -1,0 +1,37 @@
+[pow, sqrt 함수]
+
+1. pow 함수
+ - 헤더파일 : C언어 <math.h> / C++ <cmath>
+ - C언어에서 함수 원형 : double pow(double base, double n)
+ - C++11에서의 함수 원형
+   (1) double pow(double base, double n)
+   (2) float pow(float base, float n)
+   (3) long double pow(long double base, long double n)
+  *** C++에서는 오버로딩이 가능하므로 같은 함수라도 매개변수 다르게 가능
+
+ - pow 함수 : base가 되는 숫자의 n 제곱을 구하는 것. (base의 n승이라고도 표현하고, 기호로는 base^n으로 표현
+ 
+ 1) 10의 2제곱
+ -> pow(10, 2)
+ // 암묵적 형변환에 의해 10은 (float)10 이런식으로 들어갈 것.
+
+ 2) 2.2의 3.3 제곱
+ -> pow(2.2, 3.3)
+
+
+2. sqrt 함수
+ - 헤더파일 : C언어 <math.h> / C++ <cmath>
+ - C언어 함수 원형 : double sqrt(double x)
+ - C++11 함수 원형
+   (1) double sqrt(double x)
+   (2) float sqrt(float x)
+   (3) long double sqrt(long double x)
+   (4) double sqrt(T x)   // T는 template을 뜻함.
+
+ - sqrt 함수 : 매개변수 x로 들어온 숫자에 루트를 씌워서 계산한 값을 반환. 즉, 루트 x를 구해주는 함수.(제곱근을 구해주는 함수)
+
+ 1) 루트 9를 구한다고 했을 때
+ -> sqrt(9)
+
+ 2) 루트 85.4를 구한다고 했을 때
+ -> sqrt(85.4)
