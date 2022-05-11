@@ -114,7 +114,7 @@ int main(void){
 }
 
 
-
+************ template를 선언할 때 <typename T>,<class T> 둘다 사용 가능
 
 
 
