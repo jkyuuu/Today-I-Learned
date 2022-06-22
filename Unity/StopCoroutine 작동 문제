@@ -1,0 +1,32 @@
+A.	if(distance <= 5f)
+    {
+	    StartCourutine(UpdatePath());
+    }
+    else if(distance > 5f)
+    {
+      StopCoroutine(UpdatePath());
+      RandMove();
+    }
+    
+-	위 처럼 했을 경우 UpdatePath()가 중지되고 RandMove() 가 실행돼야 하는데, 중지가 제대로 되지 않아 코루틴과 RandMove 함수를 동시에 실행한다.
+-	문제 발생 이유는 IEnumerator 메서드 실행 때마다 참조값이 바뀌기 때문이다.
+-	UpdatePath 메서드 실행 반환값을 StartCoroutine 메서드에 전달하는데, 이 때 UpdatePath 실행 때마다 참조값이 바뀌게 되어 StopCoroutine이 제대로 작동하지 않는다.
+-	아래 B안 처럼 변수를 선언 후 변수에 함수를 담아 실행하면 해결된다.
+
+B.	private IEnumerator following;
+    
+    void Start()
+    {
+      following = UpdatePath();
+    void Update()
+    {
+      if(distance <= 5f)
+      {
+	      StartCourutine(following);
+      }
+      else if(distance > 5f)
+      {
+        StopCoroutine(following);
+        RandMove();
+      }
+		}
